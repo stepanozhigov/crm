@@ -1,0 +1,82 @@
+.add-button {
+    margin-bottom: 20px;
+}
+
+.invalid-feedback {
+    display: block;
+}
+
+.users-row_delete {
+    pointer-events: none;
+    opacity: .5;
+}
+
+.form_checkbox {
+    width: 15px;
+}
+
+.checkbox_label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-custom-checkbox {
+    width: 18px;
+}
+
+.form-button-edit {
+    margin-top: 20px;
+}
+
+.bill-sum_src {
+    text-decoration: line-through;
+}
+
+label.required:after {
+    color: red;
+    content: " *";
+}
+
+.edit-modal {
+    height: 40px;
+    width: 100px;
+    position: fixed;
+    left: 50%;
+    margin-left: -50px;
+    top: 50%;
+    margin-top: -50px;
+}
+
+.editableField {
+    cursor: pointer;
+    font-weight: bold
+}
+
+tr.child-align-top > th {
+    vertical-align: top;
+}
+
+/*COMMENT CRM CLASSES*/
+:root {
+    --bg-yellow-color: 255, 193, 7;
+    --bg-green-color: 40, 167, 69;
+    --bg-opacity: .5;
+}
+
+.border.crm-comment-pending {
+     border-left: .5rem solid rgba(var(--bg-yellow-color), var(--bg-opacity)) !important;
+ }
+.border.crm-comment-approved {
+    border-left: .5rem solid rgba(var(--bg-green-color), var(--bg-opacity)) !important;
+}
+/*/COMMENT CRM CLASSES*/
+
+.wrapper-products {
+    overflow-y: scroll;
+    height: 300px;
+    font-size: 14px;
+}
+.modal label {
+    font-weight: 600 !important;
+}

@@ -1,0 +1,119 @@
+version: '3'
+services:
+  nginx:
+    build:
+      context: ./
+      dockerfile: docker/nginx.docker
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/ssl:/etc/nginx/ssl
+    ports:
+      - "8080:443"
+    extra_hosts:
+      - "loc.laravel:127.0.0.1"
+      - "crm.loc.laravel:127.0.0.1"
+      - "lk.loc.laravel:127.0.0.1"
+    links:
+      - php-fpm
+
+  php-fpm:
+    build:
+      context: ./
+      dockerfile: docker/php-fpm.docker
+    volumes:
+      - ./:/var/www
+    links:
+      - mysql
+      - redis
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=mysql"
+      - "REDIS_PORT=6379"
+      - "REDIS_HOST=redis"
+
+  php-cli:
+    build:
+      context: ./
+      dockerfile: docker/php-cli.docker
+    volumes:
+      - ./:/var/www
+    links:
+      - mysql
+      - redis
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=mysql"
+      - "REDIS_PORT=6379"
+      - "REDIS_HOST=redis"
+    working_dir: /var/www
+    tty: true
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      -  ./docker/mysql/init:/docker-entrypoint-initdb.d
+      - ./storage/docker/mysql:/var/lib/mysql
+    environment:
+      - "MYSQL_ROOT_PASSWORD=secret"
+      - "MYSQL_USER=app"
+      - "MYSQL_PASSWORD=secret"
+      - "MYSQL_DATABASE=app"
+    ports:
+      - "33061:3306"
+  redis:
+    image: redis:5.0-alpine
+    ports:
+      - "63791:6379"
+
+  node:
+    image: node:12.7-alpine
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    tty: true
+
+  cron:
+    build:
+      context: ./docker
+      dockerfile: cron.docker
+    volumes:
+      - ./:/var/www
+    restart: always
+    working_dir: /var/www
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=mysql"
+      - "REDIS_PORT=6379"
+      - "REDIS_HOST=redis"
+
+  supervisord:
+    build:
+      context: ./docker
+      dockerfile: supervisor.docker
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=mysql"
+      - "REDIS_PORT=6379"
+      - "REDIS_HOST=redis"
+
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8081:80
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: secret
+      UPLOAD_LIMIT: 10000000000

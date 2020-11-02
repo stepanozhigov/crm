@@ -1,0 +1,42 @@
+@font-face {
+    font-family: 'yandex-sans';
+    font-weight: 100;
+    font-style: normal;
+    font-stretch: normal;
+    src: url("../fonts/yap/UWnXr04FRLPjh1_U16RDnrTPgI.woff2") format('woff2'), url("../fonts/yap/F0yMAikMvLZU-ZA8--49rjMywAM.woff") format('woff');
+  }
+  @font-face {
+    font-family: 'yandex-sans';
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+    src: url("../fonts/yap/GituScM_-4N6G_NbkNFGl3QuY1k.woff2") format('woff2'), url("../fonts/yap/pTlXL9UR9mDEGvGf8tMPbjLky1A.woff") format('woff');
+  }
+  @font-face {
+    font-family: 'yandex-sans';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    src: url("../fonts/yap/GEumJGdz6PuI2jZ6GhSq0paPvho.woff2") format('woff2'), url("../fonts/yap/6ht3TWbVtHpfxwRbEdAXAbwRBBk.woff") format('woff');
+  }
+  @font-face {
+    font-family: 'yandex-sans';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    src: url("../fonts/yap/jyjCN4zgI57UwoJpEmCnznrQydw.woff2") format('woff2'), url("../fonts/yap/Kvkm8LWYsAo1I5VXauiNHGR8_RI.woff") format('woff');
+  }
+  @font-face {
+    font-family: 'yandex-sans';
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    src: url("../fonts/yap/yboQWNa1IJ-YFCgYbNWuynXTQcY.woff2") format('woff2'), url("../fonts/yap/g0MeJlAWVRZjlLOLzhOGwwDQzKY.woff") format('woff');
+  }
+  @font-face {
+    font-family: 'yandex-sans';
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    src: url("../fonts/yap/cXX7mP_o-5hg5efoMGpgrVrpE1Y.woff2") format('woff2'), url("../fonts/yap/ywdtNA7T1EHnsMdKR4LaCjRP920.woff") format('woff');
+  }
